@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    h1{
+      font-size: 300%;
+    }
+  </style>
+</head>
+  <body>
+    <h1>{{rest_name}}</h1>
+    <a href="{{url_for('newMenuItem',restaurant_id=app_restaurant_id)}}">Create new item</a>
+    <h2>Appetizers</h2>
+    {% for i in rest_menu %}
+      {% if i['course'] == 'Appetizer': %}
+        <p>{{i['name']}}</p>
+        <p>{{i['description']}}</p>
+        <p>{{i['price']}}</p>
+        <a href="{{url_for('editMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">edit</a>
+        <a href="{{url_for('deleteMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">delete</a>
+      {% endif %}
+    {% endfor %}
+    <h2>Entrees</h2>
+    {% for i in rest_menu %}
+      {% if i['course'] == 'Entree': %}
+        <p>{{i['name']}}</p>
+        <p>{{i['description']}}</p>
+        <p>{{i['price']}}</p>
+        <a href="{{url_for('editMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">edit</a>
+        <a href="{{url_for('deleteMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">delete</a>
+      {% endif %}
+    {% endfor %}
+    <h2>Beverages</h2>
+    {% for i in rest_menu %}
+      {% if i['course'] == 'Beverage': %}
+        <p>{{i['name']}}</p>
+        <p>{{i['description']}}</p>
+        <p>{{i['price']}}</p>
+        <a href="{{url_for('editMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">edit</a>
+        <a href="{{url_for('deleteMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">delete</a>
+      {% endif %}
+    {% endfor %}
+
+  </body>
+</html>

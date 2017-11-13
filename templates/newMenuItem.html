@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <body>
+  <h1>New Menu Item</h1>
+  <form action="{{url_for('newMenuItem',restaurant_id=app_restaurant_id)}}" method="post">
+    <h3>Name:</h3>
+    <input type="text"  value="">
+    <h3>Description:</h3>
+    <input type="text" value="">
+    <h3>Course:</h3>
+    <input type="radio" value="">Appetizer<br>
+    <input type="radio" value="">Entreen<br>
+    <input type="radio" value="">Dessert<br>
+    <input type="radio" value="">Beverage<br>
+    <br>
+    <input type="submit" value="Create">
+  </form>
+  </body>
+</html>
