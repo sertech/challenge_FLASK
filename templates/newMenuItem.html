@@ -4,14 +4,16 @@
   <h1>New Menu Item</h1>
   <form action="{{url_for('newMenuItem',restaurant_id=app_restaurant_id)}}" method="post">
     <h3>Name:</h3>
-    <input type="text"  value="">
+    <input type="text"  name="menu_item_name">
     <h3>Description:</h3>
-    <input type="text" value="">
+    <input type="text" name="menu_item_description">
+    <h3>Price:</h3>
+    <input type="text" name="menu_item_price">
     <h3>Course:</h3>
-    <input type="radio" value="">Appetizer<br>
-    <input type="radio" value="">Entreen<br>
-    <input type="radio" value="">Dessert<br>
-    <input type="radio" value="">Beverage<br>
+    <input type="radio" name="course" value="Appetizer">Appetizer<br>
+    <input type="radio" name="course" value="Entree">Entree<br>
+    <input type="radio" name="course" value="Dessert">Dessert<br>
+    <input type="radio" name="course" value="Beverage">Beverage<br>
     <br>
     <input type="submit" value="Create">
   </form>

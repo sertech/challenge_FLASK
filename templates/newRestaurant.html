@@ -2,10 +2,10 @@
 
   <body>
     <h1>New Restaurant</h1>
-    <!--for now the method is get!-->
-    <form action="{{url_for('newRestaurant')}}" method="get">
+    <form action="{{url_for('newRestaurant')}}" method="post">
       <input type="text" name="r_name">
       <input type="submit" value="Create">
+      <a href="{{url_for('showRestaurants')}}">cancel</a>
     </form>
   </body>
 </html>

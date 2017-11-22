@@ -2,11 +2,40 @@
 <html>
   <body>
     <h1>Edit Menu Item</h1>
-    <form action="{{url_for('editMenuItem',restaurant_id=app_restaurant_id,menu_id=app_menu_id)}}" method="post">
+    <form action="{{url_for('editMenuItem',restaurant_id=app_restaurant_id,menu_id=app_selected_menu.id)}}" method="post">
       <h3>Name:</h3>
-      <input type="text" value="" placeholder="{{app_items[app_menu_id-1]['name']}}">
+      <input type="text" name="new_item_name" placeholder="{{app_selected_menu.name}}">
+      <h3>Description:</h3>
+      <input type="text" name="new_item_description" placeholder="{{app_selected_menu.description}}">
+      <h3>Price:</h3>
+      <input type="text" name="new_item_price" placeholder="{{app_selected_menu.price}}">
+
+      <h3>Course:</h3>
+      {% if app_selected_menu.course == 'Appetizer': %}
+        <input type="radio" name="new_course" value="Appetizer" checked="checked">[was]Appetizer<br>
+        <input type="radio" name="new_course" value="Entree">Entree<br>
+        <input type="radio" name="new_course" value="Dessert">Dessert<br>
+        <input type="radio" name="new_course" value="Beverage">Beverage<br>
+      {% elif app_selected_menu.course == 'Entree': %}
+        <input type="radio" name="new_course" value="Appetizer">Appetizer<br>
+        <input type="radio" name="new_course" value="Entree" checked="checked">[was]Entree<br>
+        <input type="radio" name="new_course" value="Dessert">Dessert<br>
+        <input type="radio" name="new_course" value="Beverage">Beverage<br>
+      {% elif app_selected_menu.course == 'Dessert': %}
+        <input type="radio" name="new_course" value="Appetizer">Appetizer<br>
+        <input type="radio" name="new_course" value="Entree">Entree<br>
+        <input type="radio" name="new_course" value="Dessert" checked="checked">[was]Dessert<br>
+        <input type="radio" name="new_course" value="Beverage">Beverage<br>
+      {% elif app_selected_menu.course == 'Beverage': %}
+        <input type="radio" name="new_course" value="Appetizer">Appetizer<br>
+        <input type="radio" name="new_course" value="Entree">Entree<br>
+        <input type="radio" name="new_course" value="Dessert">Dessert<br>
+        <input type="radio" name="new_course" value="Beverage" checked="checked">[was]Beverage<br>
+      {% endif %}
+
+      <br>
       <input type="submit" value="Edit">
-      <a href="#">Cancel</a>
+      <a href="{{url_for('showMenu',restaurant_id=app_restaurant_id)}}">Cancel</a>
     </form>
   </body>
 </html>

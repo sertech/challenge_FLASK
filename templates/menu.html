@@ -8,36 +8,60 @@
   </style>
 </head>
   <body>
-    <h1>{{rest_name}}</h1>
-    <a href="{{url_for('newMenuItem',restaurant_id=app_restaurant_id)}}">Create new item</a>
+    <h1>[Restaurant] {{app_selected_rest.name}}</h1>
+    <h2>Menu</h2>
+    <a href="{{url_for('showRestaurants')}}">[all restaurants]</a>
+    <br>
+    <h1>List of Restaurants</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+          {% for message in messages %}
+            <li><strong>{{message}}</strong></li>
+          {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+    <br>
+    <a href="{{url_for('newMenuItem',restaurant_id=app_selected_rest.id)}}">Create new item</a>
     <h2>Appetizers</h2>
-    {% for i in rest_menu %}
-      {% if i['course'] == 'Appetizer': %}
-        <p>{{i['name']}}</p>
-        <p>{{i['description']}}</p>
-        <p>{{i['price']}}</p>
-        <a href="{{url_for('editMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">edit</a>
-        <a href="{{url_for('deleteMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">delete</a>
+    {% for menu_item in app_rest_menu %}
+      {% if menu_item.course == 'Appetizer': %}
+        <p>{{menu_item.name}}</p>
+        <p>{{menu_item.description}}</p>
+        <p>{{menu_item.price}}</p>
+        <a href="{{url_for('editMenuItem',restaurant_id=app_selected_rest.id,menu_id=menu_item.id)}}">edit</a>
+        <a href="{{url_for('deleteMenuItem',restaurant_id=app_selected_rest.id,menu_id=menu_item.id)}}">delete</a>
       {% endif %}
     {% endfor %}
     <h2>Entrees</h2>
-    {% for i in rest_menu %}
-      {% if i['course'] == 'Entree': %}
-        <p>{{i['name']}}</p>
-        <p>{{i['description']}}</p>
-        <p>{{i['price']}}</p>
-        <a href="{{url_for('editMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">edit</a>
-        <a href="{{url_for('deleteMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">delete</a>
+    {% for menu_item in app_rest_menu %}
+      {% if menu_item.course == 'Entree': %}
+        <p>{{menu_item.name}}</p>
+        <p>{{menu_item.description}}</p>
+        <p>{{menu_item.price}}</p>
+        <a href="{{url_for('editMenuItem',restaurant_id=app_selected_rest.id,menu_id=menu_item.id)}}">edit</a>
+        <a href="{{url_for('deleteMenuItem',restaurant_id=app_selected_rest.id, menu_id=menu_item.id)}}">delete</a>
       {% endif %}
     {% endfor %}
     <h2>Beverages</h2>
-    {% for i in rest_menu %}
-      {% if i['course'] == 'Beverage': %}
-        <p>{{i['name']}}</p>
-        <p>{{i['description']}}</p>
-        <p>{{i['price']}}</p>
-        <a href="{{url_for('editMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">edit</a>
-        <a href="{{url_for('deleteMenuItem',restaurant_id=app_restaurant_id,menu_id=i['id'])}}">delete</a>
+    {% for menu_item in app_rest_menu %}
+      {% if menu_item.course == 'Beverage': %}
+        <p>{{menu_item.name}}</p>
+        <p>{{menu_item.description}}</p>
+        <p>{{menu_item.price}}</p>
+        <a href="{{url_for('editMenuItem',restaurant_id=app_selected_rest.id,menu_id=menu_item.id)}}">edit</a>
+        <a href="{{url_for('deleteMenuItem',restaurant_id=app_selected_rest.id,menu_id=menu_item.id)}}">delete</a>
+      {% endif %}
+    {% endfor %}
+    <h2>Desserts</h2>
+    {% for menu_item in app_rest_menu %}
+      {% if menu_item.course == 'Dessert': %}
+        <p>{{menu_item.name}}</p>
+        <p>{{menu_item.description}}</p>
+        <p>{{menu_item.price}}</p>
+        <a href="{{url_for('editMenuItem',restaurant_id=app_selected_rest.id,menu_id=menu_item.id)}}">edit</a>
+        <a href="{{url_for('deleteMenuItem',restaurant_id=app_selected_rest.id,menu_id=menu_item.id)}}">delete</a>
       {% endif %}
     {% endfor %}
 

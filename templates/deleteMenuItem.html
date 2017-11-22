@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <h1>Are you sure you want to delete {{app_items[app_menu_id-1]['name']}}?</h1>
-    <form action="{{url_for('deleteMenuItem',restaurant_id=app_restaurant_id,menu_id=app_menu_id)}}" method="post">
+    <h1>Are you sure you want to delete {{app_selected_rest.name}}'s menu item'?</h1>
+    <h3>Name:</h3>
+    <h3>{{app_del_menu_item.name}}</h3>
+    <h3>Description</h3>
+    <h3>{{app_del_menu_item.description}}</h3>
+    <h3>Price</h3>
+    <h3>{{app_del_menu_item.price}}</h3>
+    <h3>Course</h3>
+    <h3>{{app_del_menu_item.course}}</h3>
+    <form action="{{url_for('deleteMenuItem',restaurant_id=app_selected_rest.id,menu_id=app_del_menu_item.id)}}" method="post">
       <input type="submit" value="Delete">
-      <a href="#">cancel</a>
+      <a href="{{url_for('showMenu',restaurant_id=app_selected_rest.id)}}">cancel</a>
     </form>
   </body>
 </html>
